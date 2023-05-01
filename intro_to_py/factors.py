@@ -1,5 +1,5 @@
 
-initial_int = (input("Please enter an interger:> "))
+#initial_int = (input("Please enter an interger:> "))
 
 def calculate_factor_list(f_user_int):
     factor_list = [1]
@@ -13,10 +13,10 @@ def calculate_factor_list(f_user_int):
         print(f"The factors of {f_user_int} are: {', '.join(map(str,(factor_list)))} and {last_item_in_list}. ")
 
 try:
-    user_int = int(initial_int)
+    user_int = int(input("Please enter an interger:> "))
     calculate_factor_list(user_int)
 except ValueError:
-    print("That is not an integer number. ")
+    print("That is not an integer. ")
     
 
 
