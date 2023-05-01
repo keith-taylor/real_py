@@ -1,6 +1,4 @@
 
-#initial_int = (input("Please enter an interger:> "))
-
 def calculate_factor_list(f_user_int):
     factor_list = [1]
     for i in range (2,f_user_int+1):
