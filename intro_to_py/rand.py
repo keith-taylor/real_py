@@ -12,10 +12,9 @@ def coinflip(iterations):
             head_count += 1
         else:
             tail_count += 1
-    return (head_count, tail_count)
-
+    return (head_count, tail_count) 
 
 heads, tails = coinflip(tosses)
 
-print(f"heads: {heads}")
-print(f"tails: {tails}")
+print(f"Heads count: {heads}")
+print(f"Tails count: {tails}")
