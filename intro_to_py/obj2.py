@@ -34,7 +34,7 @@ class Car:
         self.make = make
         self.model = model 
         self.registration = registration
-        self.reg_year =  reg_year
+        self.reg_year = reg_year
         self.colour = colour
         self.mileage = mileage
     
@@ -42,8 +42,11 @@ class Car:
         self.mileage = self.mileage + miles 
     
     def __str__(self):
-        return f"\nCar details: {self.reg_year} {self.colour} {self.make} {self.model} with {self.mileage} miles on the clock. \nThe car's registration is: {self.registration}." 
-
+        return (
+            f"\nCar details: {self.reg_year} {self.colour} {self.make} {self.model} with {self.mileage} miles on the clock. "
+            f"\nThe car's registration is: {self.registration}." 
+        )
+        
 amanda_car = Car("Porsche", "Carerra", "FK18 7CAR", 2001, "Racing Green", 12_345)
 
 print(amanda_car)
