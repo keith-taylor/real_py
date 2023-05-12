@@ -33,14 +33,18 @@ class JackRussell(Dog):
 class Bulldog(Dog):
     pass
 
+class JackRussel(Dog):
+    def speak(self, sound= "arf-arf"):
+        return f"{self.name} says {sound}!"
+
 myles = JackRussell("Myles", 4, "boy")
 jacky = Bulldog("Jacky", 3, "girl")
 
 class Labrador(Dog):
     pass
 
-ghandi = Labrador("Ghandi", 3, "boy")
+ghandi = JackRussel("Ghandi", 3, "boy")
 
 print(f"{ghandi.name} is a {ghandi.species}.")
 print(ghandi)
-print(ghandi.speak("rrruff"))
+print(ghandi.speak())
