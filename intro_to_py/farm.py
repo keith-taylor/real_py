@@ -3,29 +3,23 @@
 class Machinery:
     def __init__(self, machine_type, manufacturer, model, storage_size, location):
         self.machine_type = machine_type 
-        self.make = manufacturer
+        self.manufacturer = manufacturer
         self.model = model
         self.storage_size  = storage_size
         self.location = location
-# Machinery could be combines, tractors, ploughs, etc
 class Tractor(Machinery):
-    machine_type = "Tractor" 
-    def __init__(self, manufacturer, model, registration, reg_year, colour, 
-                 initial_milage, location):
-        self.manufacturer = manufacturer
-        self.model = model
+    def __init__(self, manufacturer, model, storage_size, 
+                 location, registration, reg_year, colour, initial_milage):
+        machine_type = "Tractor" 
+        super().__init__(machine_type, manufacturer, model, storage_size, location)
         self.registration = registration
         self.reg_year = reg_year
         self.colour = colour
         self.initial_milage = initial_milage
         self.milage = initial_milage
-        # self.storage_size = storage_size
-        self.location = location
-        storage_size = 9
     def __str__(self):
         return (
-            f"\nMachine details: {self.machine_type}"
-            f"\n{self.colour.capitalize()} {self.manufacturer} {self.model}. "
+            f"\nMachine details: {self.colour.capitalize()}, {self.manufacturer}, {self.model}, {self.machine_type}"
             f"\nRegistration number: {self.registration}, Registration year: {self.reg_year}. "
             f"\nIt has done {self.initial_milage:,} miles and is currently stored in the {self.location}. " 
         )
@@ -33,44 +27,35 @@ class Tractor(Machinery):
         self.milage = self.milage + miles 
     
 class CombineHarvester(Machinery):
-    machine_type = "Combine Harvester"
-    def __init__(self, manufacturer, model, registration, reg_year, colour, 
-                 initial_milage, storage_size, location):
-        self.manufacturer = manufacturer
-        self.model = model
+    def __init__(self, manufacturer, model, storage_size,
+                 location, registration, reg_year, colour, initial_milage):
+        machine_type = "Combine Harvester"
+        super().__init__(machine_type, manufacturer, model, storage_size, location)
         self.registration = registration
         self.reg_year = reg_year
         self.colour = colour
         self.initial_milage = initial_milage
         self.milage = initial_milage
-        self.storage_size  = storage_size
-        self.location = location
-        storage_size = 10
     def __str__(self):
         return (
-            f"\nMachine details: {self.machine_type}"
-            f"\n{self.colour.capitalize()} {self.manufacturer} {self.model}. "
-            f"\nRegistration number: {self.registration}, Registration year : {self.reg_year}. "
+            f"\nMachine details: {self.colour.capitalize()}, {self.manufacturer}, {self.model}, {self.machine_type}"
+            f"\nRegistration number: {self.registration}, Registration year: {self.reg_year}. "
             f"\nIt has done {self.initial_milage:,} miles and is currently stored in the {self.location}. " 
         )
     def drive(self, miles):
         self.milage = self.milage + miles 
 class Bailer(Machinery):
-    machine_type = "Bailer"
-    def __init__(self, manufacturer, model, manufact_year, colour, 
-                 storage_size, location):
+    def __init__(self, manufacturer, model, storage_size,
+                 location, manufact_year, colour):
+        machine_type = "Bailer"
+        super().__init__(machine_type, manufacturer, model, storage_size, location)
         self.manufacturer = manufacturer
-        self.model = model
         self.manufact_year = manufact_year
         self.colour = colour
-        self.storage_size = storage_size
-        self.location = location
-        storage_size = 10
     def __str__(self):
         return (
-            f"\nMachine details: {self.machine_type} "
-            f"\n{self.colour.capitalize()} {self.manufacturer} {self.model}. "
-            f"\Currently stored in the {self.location}. "
+            f"\nMachine details: {self.colour.capitalize()}, {self.manufacturer}, {self.model}, {self.machine_type} "
+            f"\nCurrently stored in the {self.location}. "
             f"\nYear of manufacture: {self.manufact_year}. "
         )
 
@@ -128,7 +113,7 @@ class Chicken(Animal):
         print(super().animal_speak(self.animal_type, self.sound))
     def move(self, move_to):
         location = move_to
-        return location
+        return location 
         
 class Cow(Animal):
     sound = "shazooooo"
@@ -175,40 +160,55 @@ sheep_001.speak()
 print(f"The breed of sheep 001 is: {sheep_001.breed}. ")
 
 # Machinery input and output
-my_red_tractor = Tractor(
+red_tractor = Tractor(
 "Massey Ferguson",
 "MF 4700 M",
+9,
+"Old Barn",
 "PR5 6HY",
-2009,
+2014,
 "red",
-4_398
+9_398
 )
+print(red_tractor)
 
-print(my_red_tractor)
+blue_combine = CombineHarvester(
+"John Deere", 
+"T670", 
+20,
+"Old Barn",
+"NX07 HMD", 
+2021, 
+"blue", 
+978
+)
+print(blue_combine)
 
-my_bailer = Bailer(
+yellow_bailer = Bailer(
 "Massey Ferguson", 
 "MF 1842S",
+10,
+"Old Barn", 
 1999, 
-"yellow" 
+"yellow"
 )
+print(yellow_bailer)
 
-print(my_bailer)
-
-my_blue_tractor = Tractor(
+blue_tractor = Tractor(
 "New Holland",
 "T7.230",
+10,
+"Old Barn",
 "AS3 9HU",
 2020,
 "blue",
 1_398
 )
-
-print(my_blue_tractor)
+print(blue_tractor)
 
 miles_to_drive = 42
-print(f"\nWe're going to drive the {my_blue_tractor.colour} {my_blue_tractor.machine_type} for {miles_to_drive} miles.")
-my_blue_tractor.drive(miles_to_drive)
-print(f"\nThe {my_blue_tractor.colour.lower()} {my_blue_tractor.manufacturer} {my_blue_tractor.model} {my_blue_tractor.machine_type.lower()} has now driven {my_blue_tractor.milage} miles. ")
+print(f"\nWe're going to drive the {blue_tractor.colour} {blue_tractor.machine_type} for {miles_to_drive} miles.")
+blue_tractor.drive(miles_to_drive)
+print(f"\nThe {blue_tractor.colour.lower()} {blue_tractor.manufacturer} {blue_tractor.model} {blue_tractor.machine_type.lower()} has now driven {blue_tractor.milage} miles. ")
 
-# Storage input and output
+print(Places.instances)
