@@ -22,3 +22,12 @@ for key, value in paths_to_check.items():
 for key, value in files_to_check.items():
     print (f"Checking {key}: {value} is a valid file: {value.is_file()}")
     
+f = pathlib.Path.home()/"hello.txt"
+print(f"f is: {f})")
+print(f"f.parent is: {f.parent})")
+for i in f.parents:
+    print([i])
+
+print(f"File name: {f.name}")
+print(f"File stem: {f.stem}")
+print(f"File suffix: {f.suffix}")
