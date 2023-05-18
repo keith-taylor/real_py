@@ -1,6 +1,5 @@
 import pathlib
 
-
 file_path = pathlib.Path.home()/"my_folder"/"myfile.txt"
 
 if file_path.is_dir():
