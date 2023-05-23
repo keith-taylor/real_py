@@ -29,3 +29,21 @@ for month in Q1:
     fin_path = fin_reports_dir/fin_report
     meet_path = meetings_dir/meeting_notes
     fin_path.touch(), meet_path.touch() 
+
+# iterate over contents of a directory using the directories stored in the mapping dictionary 
+for key, value in dirs_to_make.items():
+    for item in value.iterdir():
+        print(f"{item}")
+
+# searching using Globs and `**/` for recusrion
+print("\nSearching for all Word documents.")
+for path in notes_2.glob("**/*.doc"):
+    print(path)
+    
+# more searching using Globs for multiple search terms 
+print("\nSearching for all Excel documents.")
+excel_file_extensions = ["*xls", "*xlxs", "*xlsm", "*xltx", "*xltm"]
+for ext in excel_file_extensions:
+    for path in notes_2.glob(f"**/*.{ext}"):
+        print(path)
+        
