@@ -38,12 +38,20 @@ for key, value in dirs_to_make.items():
 # searching using Globs and `**/` for recusrion
 print("\nSearching for all Word documents.")
 for path in notes_2.glob("**/*.doc"):
-    print(path)
+    if path.is_file(): # to stop it printing directories 
+        print(path)
     
 # more searching using Globs for multiple search terms 
 print("\nSearching for all Excel documents.")
 excel_file_extensions = ["*xls", "*xlxs", "*xlsm", "*xltx", "*xltm"]
 for ext in excel_file_extensions:
     for path in notes_2.glob(f"**/*.{ext}"):
-        print(path)
+        if path.is_file(): # to stop it printing directories 
+            print(path)
         
+# searching using glob and wildcards
+search_pattern = "?e*"
+print(f"\nSearching for {search_pattern} matching documents.")
+for path in notes_2.glob(f"**/{search_pattern}"):
+    if path.is_file(): # to stop it printing directories 
+        print((str(path)).split('/')[-1]) # just the file names (no paths)
