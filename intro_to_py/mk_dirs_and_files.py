@@ -70,3 +70,5 @@ print(f"\nSearching {(str(search_dir)).split('/')[-1]} for items matching '{sear
 for path in search_dir.glob(f"**/{search_pattern}"):
     if path.is_file(): # to stop it printing directories 
         print((str(path)).split('/')[-1]) # just the file names (no paths)
+        
+        
