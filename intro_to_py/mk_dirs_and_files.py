@@ -55,3 +55,18 @@ print(f"\nSearching for {search_pattern} matching documents.")
 for path in notes_2.glob(f"**/{search_pattern}"):
     if path.is_file(): # to stop it printing directories 
         print((str(path)).split('/')[-1]) # just the file names (no paths)
+
+#  create some new files
+po_directory = notes_2/"project_one"/"POs"
+po_directory.mkdir(parents=True, exist_ok=True)
+for i in range(1,8):
+    po_path = po_directory/f"100-30-2{i}_purchase_order.pdf"
+    po_path.touch()
+
+# searching newly created POs using glob and wildcard []
+search_pattern = "100-30-2[034]*"
+search_dir = po_directory
+print(f"\nSearching {(str(search_dir)).split('/')[-1]} for items matching '{search_pattern}'.")
+for path in search_dir.glob(f"**/{search_pattern}"):
+    if path.is_file(): # to stop it printing directories 
+        print((str(path)).split('/')[-1]) # just the file names (no paths)
