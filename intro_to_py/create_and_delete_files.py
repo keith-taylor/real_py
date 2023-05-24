@@ -26,3 +26,4 @@ else:
     (flicker_dir/flicker_file_name).touch()
     print("Re-scanning.")
     scan_and_print(flicker_file_name, flicker_dir)
+
